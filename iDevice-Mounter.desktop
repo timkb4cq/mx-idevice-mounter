@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=iDevice Mounter
+
+Comment=A GUI for mounting & unmounting iPhones & iPads
+
+Exec=/usr/bin/idevice-mounter
+Icon=idevice
+Terminal=false
+NoDisplay=false
+Type=Application
+Categories=Qt;Settings;System;Filesystem;Utility
+Encoding=UTF-8
+Name[en_US.UTF-8]=MX-iDevice-Mounter

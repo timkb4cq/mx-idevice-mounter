@@ -1,0 +1,128 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+"""
+iDevice mounter for MX 
+
+This program scans, mounts and unmounts iPhones and iPads.
+
+Author: Timothy E. Harris <maintainer@mxrepo.com>
+Last edited: October 2017
+License GPL-2+
+"""
+
+import sys, time
+import subprocess
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton
+from PyQt5.QtGui import QIcon
+
+class Idevmanager(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        
+        self.initUI()
+        self.getDeviceinfo()    
+
+    def getDeviceinfo(self):
+        p = subprocess.check_output(['/usr/bin/ideviceinfo -s -k DeviceName; exit 0'], shell=True)
+        self.devicename = p.decode('utf-8').rstrip()
+        if self.devicename == 'No device found, is it plugged in?':
+           self.deviceid = ''
+           self.mountb.setEnabled(False)
+           self.umountb.setEnabled(False)
+        else:
+           p = subprocess.check_output(['/usr/bin/ideviceinfo -s -k UniqueDeviceID; exit 0'], shell=True)
+           self.deviceid = p.decode('utf-8').rstrip()
+           self.mypath = "/media/mx-idevice/" + self.deviceid + "/" + self.devicename
+           if self.isMount():
+              self.mountb.setEnabled(False)
+              self.umountb.setEnabled(True)
+           else:
+              self.mountb.setEnabled(True)
+              self.umountb.setEnabled(False)              
+        self.label2.setText(self.devicename)
+        self.label4.setText(self.deviceid)
+
+    def mountDevice(self):
+        if self.deviceid == '':
+           self.mountb.setEnabled(False)
+        else:
+           self.mypath = "/media/mx-idevice/" + self.deviceid + "/" + self.devicename
+           p = subprocess.call(["/bin/mkdir", "-p", self.mypath])
+           p = subprocess.call(["/usr/bin/ifuse", "-u", self.deviceid, self.mypath])
+#           time.sleep(.2)
+           subprocess.run(["/usr/bin/thunar", self.mypath])
+        if self.isMount():
+           self.umountb.setEnabled(True)
+           self.mountb.setEnabled(False)
+        else:
+           self.umountb.setEnabled(False)
+           self.mountb.setEnabled(True)
+
+    def umountDevice(self):
+        self.mypath = "/media/mx-idevice/" + self.deviceid + "/" + self.devicename
+        if self.isMount():
+           p = subprocess.call(["/bin/fusermount", "-u", self.mypath])
+           p = subprocess.call(["/bin/rmdir", self.mypath])
+           p = subprocess.call(["/bin/rmdir","/media/mx-idevice/" + self.deviceid ])
+        self.umountb.setEnabled(False)
+        self.mountb.setEnabled(True)
+
+    def isMount(self):
+        cmd = 'mount | grep "' + self.mypath + '"'
+        p = subprocess.call([cmd], shell=True)
+        if p == 0:
+           return True
+        else:
+           return False
+
+    def initUI(self):               
+        
+        self.setGeometry(100, 300, 560, 300)
+        self.setWindowTitle('Mount iDevice')
+        self.setWindowIcon(QIcon('idevice.svg'))
+        self.setStyleSheet("background-color: lavender; color: black")
+
+        self.mountb = QPushButton('Mount', self)
+        self.mountb.move(430, 120)
+        self.mountb.clicked.connect(self.mountDevice)
+
+        rescanb = QPushButton('Rescan', self)
+        rescanb.move(430, 50)
+        rescanb.clicked.connect(self.getDeviceinfo)
+
+        self.umountb = QPushButton('Unmount', self)
+        self.umountb.move(430, 190)
+        self.umountb.clicked.connect(self.umountDevice)
+
+        self.header = QLabel('', self)
+        self.header.setGeometry(10, 10, 420, 120)
+        self.header.setText('If your device is not found, make sure it is unlocked.\nIf you get a "Trust This Computer?" popup on your device\nwhen you plug it in answer "Trust", then Rescan\n\nIf the information below describes your Apple device\npress the "Mount" button to access its files.')
+        
+        self.label1 = QLabel("iName:", self)
+        self.label1.setGeometry(10, 135, 50, 25)
+
+        self.label2 = QLabel('', self)
+        self.label2.setGeometry(70, 135, 320, 25)
+        self.label2.setStyleSheet("background-color: white; border-style: outset; border-width: 2px; border-color: black")
+        
+        self.label3 = QLabel("UUID:", self)
+        self.label3.setGeometry(10, 165, 60, 25)
+         
+        self.label4 = QLabel('', self)
+        self.label4.setGeometry(70, 165, 320, 25)
+        self.label4.setStyleSheet("background-color: white; border-style: outset; border-width: 2px; border-color: black")
+
+        self.footer = QLabel('', self)
+        self.footer.setGeometry(10, 190, 420, 100)
+        self.footer.setText('Use the Unmount button before you remove\nyour device.  If you have already unplugged it\nplug your device back in, Rescan and Unmount.')
+
+        self.show()
+
+if __name__ == '__main__':
+    
+    app = QApplication(sys.argv)
+
+    ex = Idevmanager()
+    sys.exit(app.exec_())

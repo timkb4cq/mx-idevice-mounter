@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_install:
+	mkdir -p debian/mx-idevice-mounter/media/mx-idevice
+	chmod 777  debian/mx-idevice-mounter/media/mx-idevice
+	dh_install
