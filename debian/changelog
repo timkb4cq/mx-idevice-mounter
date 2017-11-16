@@ -1,4 +1,10 @@
-mx-idevice-mounter (0.1.1) mx; urgency=medium
+mx-idevice-mounter (0.1.2+1) mx; urgency=medium
+
+  * Re-fixed python3-qt5 dependency
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Thu, 16 Nov 2017 09:08:15 -0500
+
+mx-idevice-mounter (0.1.2) mx; urgency=medium
 
   * Changed icon paths, Added "Close button" and MX logo
   * Modified Desktop file and tweaked appearance.
