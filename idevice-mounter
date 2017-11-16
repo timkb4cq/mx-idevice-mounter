@@ -13,7 +13,7 @@ License GPL-2+
 
 import sys, time
 import subprocess
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QWidget
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QWidget, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QCoreApplication
 
@@ -78,6 +78,19 @@ class Idevmanager(QMainWindow):
         else:
            return False
 
+    def displayAbout(self):
+        p = subprocess.check_output(['dpkg -l mx-idevice-mounter | grep mounter | cut -f 4 -d " "' ], shell=True)
+        myversion = p.decode('utf-8').rstrip()        
+        aboutBox = QMessageBox()
+        aboutBox.setText("<p align=center><b><h2>" + "MX iDevice Mounter" + "</h2></b></p><p align=center>Version: " + myversion + "</p><p align=center><h3>" +
+                   "GUI program for mounting & unmounting <br> iPhones and Ipads in MX Linux" + "</h3></p><p align=center><a href=http://mxlinux.org>http://mxlinux.org</a> \
+                   <br></p><p align=center>" + "Copyright (c) MX Linux" + "<br /><br /></p>")
+        aboutBox.addButton("Cancel", QMessageBox.YesRole)
+        aboutBox.addButton("License", QMessageBox.NoRole)
+        reply = aboutBox.exec_()
+        if reply == 1:
+           p=subprocess.call(["/usr/bin/mx-viewer", "/usr/share/doc/mx-idevice-mounter/license.html", "MX iDevice Mounter license"])
+
     def initUI(self):               
         
         self.setGeometry(100, 300, 580, 360)
@@ -100,6 +113,10 @@ class Idevmanager(QMainWindow):
         self.closeb = QPushButton('Close', self)
         self.closeb.move(430, 315)
         self.closeb.clicked.connect(QCoreApplication.instance().quit)
+
+        self.aboutb = QPushButton('About', self)
+        self.aboutb.move(10, 315)
+        self.aboutb.clicked.connect(self.displayAbout)
 
         self.header = QLabel('', self)
         self.header.setGeometry(10, 10, 420, 120)
