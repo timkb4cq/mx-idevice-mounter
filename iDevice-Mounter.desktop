@@ -10,6 +10,6 @@ Icon=idevice
 Terminal=false
 NoDisplay=false
 Type=Application
-Categories=Qt;Settings;System;Filesystem;Utility
+Categories=Qt;Settings;System;Filesystem;Utility;MX-Utilities
 Encoding=UTF-8
 Name[en_US.UTF-8]=MX-iDevice-Mounter

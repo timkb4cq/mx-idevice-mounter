@@ -13,8 +13,9 @@ License GPL-2+
 
 import sys, time
 import subprocess
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton
-from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QWidget
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import QCoreApplication
 
 class Idevmanager(QMainWindow):
     
@@ -79,10 +80,10 @@ class Idevmanager(QMainWindow):
 
     def initUI(self):               
         
-        self.setGeometry(100, 300, 560, 300)
+        self.setGeometry(100, 300, 580, 360)
         self.setWindowTitle('Mount iDevice')
-        self.setWindowIcon(QIcon('idevice.svg'))
-        self.setStyleSheet("background-color: lavender; color: black")
+        self.setWindowIcon(QIcon('/usr/share/pixmaps/idevice.svg'))
+        self.setStyleSheet("color: black")
 
         self.mountb = QPushButton('Mount', self)
         self.mountb.move(430, 120)
@@ -96,6 +97,10 @@ class Idevmanager(QMainWindow):
         self.umountb.move(430, 190)
         self.umountb.clicked.connect(self.umountDevice)
 
+        self.closeb = QPushButton('Close', self)
+        self.closeb.move(430, 315)
+        self.closeb.clicked.connect(QCoreApplication.instance().quit)
+
         self.header = QLabel('', self)
         self.header.setGeometry(10, 10, 420, 120)
         self.header.setText('If your device is not found, make sure it is unlocked.\nIf you get a "Trust This Computer?" popup on your device\nwhen you plug it in answer "Trust", then Rescan\n\nIf the information below describes your Apple device\npress the "Mount" button to access its files.')
@@ -104,19 +109,25 @@ class Idevmanager(QMainWindow):
         self.label1.setGeometry(10, 135, 50, 25)
 
         self.label2 = QLabel('', self)
-        self.label2.setGeometry(70, 135, 320, 25)
-        self.label2.setStyleSheet("background-color: white; border-style: outset; border-width: 2px; border-color: black")
+        self.label2.setGeometry(70, 135, 340, 25)
+        self.label2.setStyleSheet("background-color: lightyellow; border-style: outset; border-width: 2px; border-color: black")
         
         self.label3 = QLabel("UUID:", self)
         self.label3.setGeometry(10, 165, 60, 25)
          
         self.label4 = QLabel('', self)
-        self.label4.setGeometry(70, 165, 320, 25)
-        self.label4.setStyleSheet("background-color: white; border-style: outset; border-width: 2px; border-color: black")
+        self.label4.setGeometry(70, 165, 340, 25)
+        self.label4.setStyleSheet("background-color: lightyellow; border-style: outset; border-width: 2px; border-color: black")
 
         self.footer = QLabel('', self)
         self.footer.setGeometry(10, 190, 420, 100)
         self.footer.setText('Use the Unmount button before you remove\nyour device.  If you have already unplugged it\nplug your device back in, Rescan and Unmount.')
+
+        self.mxlogo = QLabel(self)
+        pixmap = QPixmap('/usr/share/mx-tweak/icons/logo.png')
+        pixmap2 = pixmap.scaledToWidth(32)
+        self.mxlogo.setPixmap(pixmap2)
+        self.mxlogo.setGeometry(260, 320, 32, 32)
 
         self.show()
 
