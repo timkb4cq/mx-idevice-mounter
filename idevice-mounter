@@ -91,6 +91,9 @@ class Idevmanager(QMainWindow):
         if reply == 1:
            p=subprocess.call(["/usr/bin/mx-viewer", "/usr/share/doc/mx-idevice-mounter/license.html", "MX iDevice Mounter license"])
 
+    def displayHelp(self):
+        p=subprocess.call(["/usr/bin/mx-viewer", "https://mxlinux.org/wiki/help-files/help-mx-idevice-mounter", "MX iDevice Mounter Help"])
+
     def initUI(self):               
         
         self.setGeometry(100, 300, 580, 360)
@@ -98,25 +101,42 @@ class Idevmanager(QMainWindow):
         self.setWindowIcon(QIcon('/usr/share/pixmaps/idevice.svg'))
         self.setStyleSheet("color: black")
 
+        abouticon = QIcon.fromTheme('help-about')
+        helpicon = QIcon.fromTheme('help-contents')
+        closeicon = QIcon.fromTheme('window-close')
+        umounticon = QIcon.fromTheme('application-x-apple-diskimage')
+        mounticon = QIcon.fromTheme('folder-apple')
+        scanicon = QIcon.fromTheme('drive-harddisk-usb-symbolic')
+
         self.mountb = QPushButton('Mount', self)
         self.mountb.move(430, 120)
+        self.mountb.setIcon(mounticon)
         self.mountb.clicked.connect(self.mountDevice)
 
         rescanb = QPushButton('Rescan', self)
         rescanb.move(430, 50)
+        rescanb.setIcon(scanicon)
         rescanb.clicked.connect(self.getDeviceinfo)
 
         self.umountb = QPushButton('Unmount', self)
         self.umountb.move(430, 190)
+        self.umountb.setIcon(umounticon)
         self.umountb.clicked.connect(self.umountDevice)
 
         self.closeb = QPushButton('Close', self)
         self.closeb.move(430, 315)
+        self.closeb.setIcon(closeicon)
         self.closeb.clicked.connect(QCoreApplication.instance().quit)
 
         self.aboutb = QPushButton('About', self)
         self.aboutb.move(10, 315)
+        self.aboutb.setIcon(abouticon)
         self.aboutb.clicked.connect(self.displayAbout)
+
+        self.helpb = QPushButton('Help', self)
+        self.helpb.move(120, 315)
+        self.helpb.setIcon(helpicon)
+        self.helpb.clicked.connect(self.displayHelp)
 
         self.header = QLabel('', self)
         self.header.setGeometry(10, 10, 420, 120)
