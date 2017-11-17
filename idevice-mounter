@@ -96,7 +96,7 @@ class Idevmanager(QMainWindow):
 
     def initUI(self):               
         
-        self.setGeometry(100, 300, 580, 360)
+        self.setGeometry(100, 300, 570, 360)
         self.setWindowTitle('Mount iDevice')
         self.setWindowIcon(QIcon('/usr/share/pixmaps/idevice.svg'))
         self.setStyleSheet("color: black")
@@ -109,22 +109,22 @@ class Idevmanager(QMainWindow):
         scanicon = QIcon.fromTheme('drive-harddisk-usb-symbolic')
 
         self.mountb = QPushButton('Mount', self)
-        self.mountb.move(430, 120)
+        self.mountb.move(460, 120)
         self.mountb.setIcon(mounticon)
         self.mountb.clicked.connect(self.mountDevice)
 
         rescanb = QPushButton('Rescan', self)
-        rescanb.move(430, 50)
+        rescanb.move(460, 50)
         rescanb.setIcon(scanicon)
         rescanb.clicked.connect(self.getDeviceinfo)
 
         self.umountb = QPushButton('Unmount', self)
-        self.umountb.move(430, 190)
+        self.umountb.move(460, 190)
         self.umountb.setIcon(umounticon)
         self.umountb.clicked.connect(self.umountDevice)
 
         self.closeb = QPushButton('Close', self)
-        self.closeb.move(430, 315)
+        self.closeb.move(460, 315)
         self.closeb.setIcon(closeicon)
         self.closeb.clicked.connect(QCoreApplication.instance().quit)
 
