@@ -11,7 +11,7 @@ Last edited: October 2017
 License GPL-2+
 """
 
-import sys, time
+import sys, time, os
 import subprocess
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QWidget, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap
@@ -26,6 +26,7 @@ class Idevmanager(QMainWindow):
         self.getDeviceinfo()    
 
     def getDeviceinfo(self):
+        self.uid = str(os.getuid())
         p = subprocess.check_output(['/usr/bin/ideviceinfo -s -k DeviceName; exit 0'], shell=True)
         self.devicename = p.decode('utf-8').rstrip()
         if self.devicename == 'No device found, is it plugged in?':
@@ -35,7 +36,7 @@ class Idevmanager(QMainWindow):
         else:
            p = subprocess.check_output(['/usr/bin/ideviceinfo -s -k UniqueDeviceID; exit 0'], shell=True)
            self.deviceid = p.decode('utf-8').rstrip()
-           self.mypath = "/media/mx-idevice/" + self.deviceid + "/" + self.devicename
+           self.mypath = "/run/user/" + self.uid + "/" + self.deviceid + "/" + self.devicename
            if self.isMount():
               self.mountb.setEnabled(False)
               self.umountb.setEnabled(True)
@@ -49,7 +50,7 @@ class Idevmanager(QMainWindow):
         if self.deviceid == '':
            self.mountb.setEnabled(False)
         else:
-           self.mypath = "/media/mx-idevice/" + self.deviceid + "/" + self.devicename
+           self.mypath = "/run/user/" + self.uid + "/" +self.deviceid + "/" + self.devicename
            p = subprocess.call(["/bin/mkdir", "-p", self.mypath])
            p = subprocess.call(["/usr/bin/ifuse", "-u", self.deviceid, self.mypath])
 #           time.sleep(.2)
@@ -62,11 +63,11 @@ class Idevmanager(QMainWindow):
            self.mountb.setEnabled(True)
 
     def umountDevice(self):
-        self.mypath = "/media/mx-idevice/" + self.deviceid + "/" + self.devicename
+        self.mypath = "/run/user/" + self.uid + "/" +self.deviceid + "/" + self.devicename
         if self.isMount():
            p = subprocess.call(["/bin/fusermount", "-u", self.mypath])
            p = subprocess.call(["/bin/rmdir", self.mypath])
-           p = subprocess.call(["/bin/rmdir","/media/mx-idevice/" + self.deviceid ])
+           p = subprocess.call(["/bin/rmdir","/run/user/" + self.uid + "/" + self.deviceid ])
         self.umountb.setEnabled(False)
         self.mountb.setEnabled(True)
 
@@ -139,7 +140,7 @@ class Idevmanager(QMainWindow):
         self.helpb.clicked.connect(self.displayHelp)
 
         self.header = QLabel('', self)
-        self.header.setGeometry(10, 10, 420, 120)
+        self.header.setGeometry(10, 10, 440, 120)
         self.header.setText('If your device is not found, make sure it is unlocked.\nIf you get a "Trust This Computer?" popup on your device\nwhen you plug it in answer "Trust", then Rescan\n\nIf the information below describes your Apple device\npress the "Mount" button to access its files.')
         
         self.label1 = QLabel("iName:", self)
@@ -157,7 +158,7 @@ class Idevmanager(QMainWindow):
         self.label4.setStyleSheet("background-color: lightyellow; border-style: outset; border-width: 2px; border-color: black")
 
         self.footer = QLabel('', self)
-        self.footer.setGeometry(10, 190, 420, 100)
+        self.footer.setGeometry(10, 190, 440, 100)
         self.footer.setText('Use the Unmount button before you remove\nyour device.  If you have already unplugged it\nplug your device back in, Rescan and Unmount.')
 
         self.mxlogo = QLabel(self)

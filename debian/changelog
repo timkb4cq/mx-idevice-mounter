@@ -1,3 +1,15 @@
+mx-idevice-mounter (0.1.3+2) mx; urgency=medium
+
+  * Change mount path base to /run/user/<uid>/ from /media/
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Sat, 25 Nov 2017 22:51:14 -0500
+
+mx-idevice-mounter (0.1.3+1) mx; urgency=medium
+
+  * Button position tweaks
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Fri, 17 Nov 2017 13:18:25 -0500
+
 mx-idevice-mounter (0.1.3) mx; urgency=medium
 
   * About & Help buttons added.  License info added.
