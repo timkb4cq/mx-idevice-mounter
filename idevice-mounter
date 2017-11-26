@@ -54,10 +54,14 @@ class Idevmanager(QMainWindow):
            p = subprocess.call(["/bin/mkdir", "-p", self.mypath])
            p = subprocess.call(["/usr/bin/ifuse", "-u", self.deviceid, self.mypath])
 #           time.sleep(.2)
-           subprocess.run(["/usr/bin/thunar", self.mypath])
+
         if self.isMount():
+           thunar = subprocess.Popen(["/usr/bin/thunar", self.mypath])
            self.umountb.setEnabled(True)
            self.mountb.setEnabled(False)
+           self.hide()
+           thunar.wait()
+           self.show()
         else:
            self.umountb.setEnabled(False)
            self.mountb.setEnabled(True)

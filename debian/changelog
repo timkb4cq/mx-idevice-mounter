@@ -1,3 +1,9 @@
+mx-idevice-mounter (0.1.4.1) mx; urgency=medium
+
+  * Hide GUI until spawned Thunar is closed
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Sun, 26 Nov 2017 16:50:41 -0500
+
 mx-idevice-mounter (0.1.4) mx; urgency=medium
 
   * Stop creating old /media based mountpoint
