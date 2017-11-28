@@ -1,3 +1,9 @@
+mx-idevice-mounter (0.1.4.2) mx; urgency=medium
+
+  * Translation framework added
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Tue, 28 Nov 2017 16:25:00 -0500
+
 mx-idevice-mounter (0.1.4.1) mx; urgency=medium
 
   * Hide GUI until spawned Thunar is closed

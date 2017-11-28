@@ -13,6 +13,13 @@ License GPL-2+
 
 import sys, time, os
 import subprocess
+
+import gettext
+gettext.bindtextdomain('mx-idevice-mounter', '/usr/share/locale')
+gettext.textdomain('mx-idevice-mounter')
+_ = gettext.gettext
+gettext.install('mx-idevice-mounter')
+
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QWidget, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QCoreApplication
@@ -87,9 +94,9 @@ class Idevmanager(QMainWindow):
         p = subprocess.check_output(['dpkg -l mx-idevice-mounter | grep mounter | cut -f 4 -d " "' ], shell=True)
         myversion = p.decode('utf-8').rstrip()        
         aboutBox = QMessageBox()
-        aboutBox.setText("<p align=center><b><h2>" + "MX iDevice Mounter" + "</h2></b></p><p align=center>Version: " + myversion + "</p><p align=center><h3>" +
+        aboutBox.setText(_("<p align=center><b><h2>" + "MX iDevice Mounter" + "</h2></b></p><p align=center>Version: " + myversion + "</p><p align=center><h3>" +
                    "GUI program for mounting & unmounting <br> iPhones and Ipads in MX Linux" + "</h3></p><p align=center><a href=http://mxlinux.org>http://mxlinux.org</a> \
-                   <br></p><p align=center>" + "Copyright (c) MX Linux" + "<br /><br /></p>")
+                   <br></p><p align=center>" + "Copyright (c) MX Linux" + "<br /><br /></p>"))
         aboutBox.addButton("Cancel", QMessageBox.YesRole)
         aboutBox.addButton("License", QMessageBox.NoRole)
         reply = aboutBox.exec_()
@@ -113,39 +120,45 @@ class Idevmanager(QMainWindow):
         mounticon = QIcon.fromTheme('folder-apple')
         scanicon = QIcon.fromTheme('drive-harddisk-usb-symbolic')
 
-        self.mountb = QPushButton('Mount', self)
+        self.mountb = QPushButton(_('Mount'), self)
         self.mountb.move(460, 120)
         self.mountb.setIcon(mounticon)
         self.mountb.clicked.connect(self.mountDevice)
 
-        rescanb = QPushButton('Rescan', self)
+        rescanb = QPushButton(_('Rescan'), self)
         rescanb.move(460, 50)
         rescanb.setIcon(scanicon)
         rescanb.clicked.connect(self.getDeviceinfo)
 
-        self.umountb = QPushButton('Unmount', self)
+        self.umountb = QPushButton(_('Unmount'), self)
         self.umountb.move(460, 190)
         self.umountb.setIcon(umounticon)
         self.umountb.clicked.connect(self.umountDevice)
 
-        self.closeb = QPushButton('Close', self)
+        self.closeb = QPushButton(_('Close'), self)
         self.closeb.move(460, 315)
         self.closeb.setIcon(closeicon)
         self.closeb.clicked.connect(QCoreApplication.instance().quit)
 
-        self.aboutb = QPushButton('About', self)
+        self.aboutb = QPushButton(_('About'), self)
         self.aboutb.move(10, 315)
         self.aboutb.setIcon(abouticon)
         self.aboutb.clicked.connect(self.displayAbout)
 
-        self.helpb = QPushButton('Help', self)
+        self.helpb = QPushButton(_('Help'), self)
         self.helpb.move(120, 315)
         self.helpb.setIcon(helpicon)
         self.helpb.clicked.connect(self.displayHelp)
 
         self.header = QLabel('', self)
-        self.header.setGeometry(10, 10, 440, 120)
-        self.header.setText('If your device is not found, make sure it is unlocked.\nIf you get a "Trust This Computer?" popup on your device\nwhen you plug it in answer "Trust", then Rescan\n\nIf the information below describes your Apple device\npress the "Mount" button to access its files.')
+        self.header.setGeometry(10, 10, 440, 60)
+        self.header.setText(_('If your device is not found, make sure it is unlocked.\nIf you get a  "Trust This Computer?"  popup on your device when you plug it in answer "Trust", then Rescan.'))
+        self.header.setWordWrap(True)
+        
+        self.header2 = QLabel('', self)
+        self.header2.setGeometry(10, 60, 440, 90)
+        self.header2.setText(_('If the information below describes your Apple device press the "Mount" button to access its files.'))
+        self.header2.setWordWrap(True)
         
         self.label1 = QLabel("iName:", self)
         self.label1.setGeometry(10, 135, 50, 25)
@@ -162,9 +175,10 @@ class Idevmanager(QMainWindow):
         self.label4.setStyleSheet("background-color: lightyellow; border-style: outset; border-width: 2px; border-color: black")
 
         self.footer = QLabel('', self)
-        self.footer.setGeometry(10, 190, 440, 100)
-        self.footer.setText('Use the Unmount button before you remove\nyour device.  If you have already unplugged it\nplug your device back in, Rescan and Unmount.')
-
+        self.footer.setGeometry(10, 190, 400, 100)
+        self.footer.setText(_('Use the Unmount button before you remove your device.  If you have already unplugged it, plug your device back in, Rescan, and Unmount.'))
+        self.footer.setWordWrap(True)
+        
         self.mxlogo = QLabel(self)
         pixmap = QPixmap('/usr/share/mx-tweak/icons/logo.png')
         pixmap2 = pixmap.scaledToWidth(32)
