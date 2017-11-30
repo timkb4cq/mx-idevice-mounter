@@ -1,3 +1,10 @@
+mx-idevice-mounter (0.1.4.3) UNRELEASED; urgency=medium
+
+  * Changed from using the unreliable Popen.wait() to os.waitpid()
+  * for determining when spawned Thunar exits.
+
+ -- Timothy E. Harris <tim@mx17b2>  Thu, 30 Nov 2017 12:48:26 -0500
+
 mx-idevice-mounter (0.1.4.2) mx; urgency=medium
 
   * Translation framework added
