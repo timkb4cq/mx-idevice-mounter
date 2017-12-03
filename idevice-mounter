@@ -93,11 +93,15 @@ class Idevmanager(QMainWindow):
 
     def displayAbout(self):
         p = subprocess.check_output(['dpkg -l mx-idevice-mounter | grep mounter | cut -f 4 -d " "' ], shell=True)
-        myversion = p.decode('utf-8').rstrip()        
+        myversion = p.decode('utf-8').rstrip()
+        t1 = _("MX iDevice Mounter")
+        t2 = _("Version:")
+        t3 = _("GUI program for mounting & unmounting <br> iPhones and Ipads in MX Linux")
+        t4 = _( "Copyright (c) MX Linux")       
         aboutBox = QMessageBox()
-        aboutBox.setText(_("<p align=center><b><h2>" + "MX iDevice Mounter" + "</h2></b></p><p align=center>Version: " + myversion + "</p><p align=center><h3>" +
-                   "GUI program for mounting & unmounting <br> iPhones and Ipads in MX Linux" + "</h3></p><p align=center><a href=http://mxlinux.org>http://mxlinux.org</a> \
-                   <br></p><p align=center>" + "Copyright (c) MX Linux" + "<br /><br /></p>"))
+        aboutBox.setText("<p align=center><b><h2>" + t1 + "</h2></b></p><p align=center>" + t2 + " " + myversion + "</p><p align=center><h3>" +
+                   t3 + "</h3></p><p align=center><a href=http://mxlinux.org>http://mxlinux.org</a> \
+                   <br></p><p align=center>" + t4 + "<br /><br /></p>")
         aboutBox.addButton("Cancel", QMessageBox.YesRole)
         aboutBox.addButton("License", QMessageBox.NoRole)
         reply = aboutBox.exec_()
@@ -153,7 +157,9 @@ class Idevmanager(QMainWindow):
 
         self.header = QLabel('', self)
         self.header.setGeometry(10, 10, 440, 60)
-        self.header.setText(_('If your device is not found, make sure it is unlocked.\nIf you get a  "Trust This Computer?"  popup on your device when you plug it in answer "Trust", then Rescan.'))
+        tl1 = _("If your device is not found, make sure it is unlocked.")
+        tl2 = _('If you get a  "Trust This Computer?"  popup on your device when you plug it in, answer "Trust", then Rescan.')
+        self.header.setText(tl1 + "\n" + tl2)
         self.header.setWordWrap(True)
         
         self.header2 = QLabel('', self)
