@@ -1,3 +1,9 @@
+mx-idevice-mounter (0.1.4.6) mx; urgency=medium
+
+  * Utilize French help translation when appropriate
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Tue, 12 Dec 2017 09:27:10 -0500
+
 mx-idevice-mounter (0.1.4.5) mx; urgency=medium
 
   * Switched "System" to "HardwareSettings" in desktop file.
