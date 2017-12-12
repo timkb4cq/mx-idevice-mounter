@@ -1,10 +1,22 @@
-mx-idevice-mounter (0.1.4.3) UNRELEASED; urgency=medium
+mx-idevice-mounter (0.1.4.5) mx; urgency=medium
+
+  * Switched "System" to "HardwareSettings" in desktop file.
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Thu, 07 Dec 2017 18:26:52 -0500
+
+mx-idevice-mounter (0.1.4.4) mx; urgency=medium
+
+  * Added fr, nl & de translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Thu, 07 Dec 2017 13:10:42 -0500
+
+mx-idevice-mounter (0.1.4.3) mx; urgency=medium
 
   * Changed from using the unreliable Popen.wait() to os.waitpid()
   * for determining when spawned Thunar exits.
 
- -- Timothy E. Harris <tim@mx17b2>  Thu, 30 Nov 2017 12:48:26 -0500
-
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Thu, 30 Nov 2017 12:48:26 -0500
+ 
 mx-idevice-mounter (0.1.4.2) mx; urgency=medium
 
   * Translation framework added

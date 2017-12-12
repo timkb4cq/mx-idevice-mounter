@@ -2,14 +2,21 @@
 
 [Desktop Entry]
 Name=iDevice Mounter
-
+Name[el]=iDeviceMounter
+Name[es]=iDevice Montador
+Name[fr]=Montage de iDevice
+Name[nl]=iApparaat Aankoppelaar
 Comment=A GUI for mounting & unmounting iPhones & iPads
+Comment[el]=Ένα GUI για την τοποθέτηση και την αποσυναρμολόγηση iPhones & iPads
+Comment[es]=un GUI para montar y desmontar iPhone y iPad
+Comment[fr]=Interface graphique permettant de monter et démonter les iPhones et iPads
+Comment[nl]=Een GUI voor het aan- & ontkoppelen van iPhones en iPads
 
 Exec=/usr/bin/idevice-mounter
 Icon=idevice
 Terminal=false
 NoDisplay=false
 Type=Application
-Categories=Qt;Settings;System;Filesystem;Utility;MX-Utilities
+Categories=Qt;Settings;HardwareSettings;Filesystem;Utility;MX-Utilities
 Encoding=UTF-8
 Name[en_US.UTF-8]=MX-iDevice-Mounter
