@@ -2,18 +2,27 @@
 
 [Desktop Entry]
 Name=iDevice Mounter
+Name[ca]=iDeviceMounter
+Name[de]=iDeviceMounter
 Name[el]=iDeviceMounter
 Name[es]=iDevice Montador
-Name[fr]=Montage de iDevice
+Name[fr]=Monteur de iDevice
+Name[hu]=iEszköz csatoló
 Name[it]=Montaggio iDevice
-Name[nl]=iApparaat Aankoppelaar
+Name[nl]=iApparaatAankoppelaar
+Name[pt]=Montar dispositivos i
+Name[sv]=iDeviceMounter
 Comment=A GUI for mounting & unmounting iPhones & iPads
+Comment[ca]=Interfície gràfica per muntar i desmuntar iPhones i iPads
+Comment[de]=Benutzeroberfläche für das Ein-und Aushängen von iPhones und iPads
 Comment[el]=Ένα GUI για την τοποθέτηση και την αποσυναρμολόγηση iPhones & iPads
 Comment[es]=un GUI para montar y desmontar iPhone y iPad
-Comment[fr]=Interface graphique permettant de monter et démonter les iPhones et iPads
+Comment[fr]=Interface graphique permettant de monter et démonter les iPhones & iPads
+Comment[hu]=Grafikus felületű iPhone & iPad csatoló és leválasztó
 Comment[it]=Programma ad interfaccia grafica per montare e smontare iPhone e iPad
-Comment[nl]=Een GUI voor het aan- & ontkoppelen van iPhones en iPads
-
+Comment[nl]=Een GUI voor het aan- en ontkoppelen van iPhones & iPads
+Comment[pt]=Interface gráfica para montar/desmontar iPhones e iPads
+Comment[sv]=Ett grafiskt användargränssnitt för att montera och avmontera iPhones & iPads
 Exec=/usr/bin/idevice-mounter
 Icon=idevice
 Terminal=false
