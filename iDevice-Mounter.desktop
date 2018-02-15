@@ -5,11 +5,13 @@ Name=iDevice Mounter
 Name[el]=iDeviceMounter
 Name[es]=iDevice Montador
 Name[fr]=Montage de iDevice
+Name[it]=Montaggio iDevice
 Name[nl]=iApparaat Aankoppelaar
 Comment=A GUI for mounting & unmounting iPhones & iPads
 Comment[el]=Ένα GUI για την τοποθέτηση και την αποσυναρμολόγηση iPhones & iPads
 Comment[es]=un GUI para montar y desmontar iPhone y iPad
 Comment[fr]=Interface graphique permettant de monter et démonter les iPhones et iPads
+Comment[it]=Programma ad interfaccia grafica per montare e smontare iPhone e iPad
 Comment[nl]=Een GUI voor het aan- & ontkoppelen van iPhones en iPads
 
 Exec=/usr/bin/idevice-mounter
