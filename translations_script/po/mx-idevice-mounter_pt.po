@@ -43,11 +43,11 @@ msgstr "Montar"
 
 #: idevice-mounter:133
 msgid "Rescan"
-msgstr ""
+msgstr "Buscar"
 
 #: idevice-mounter:138
 msgid "Unmount"
-msgstr ""
+msgstr "Desmontar"
 
 #: idevice-mounter:143
 msgid "Close"
@@ -63,14 +63,16 @@ msgstr "Ajuda"
 
 #: idevice-mounter:160
 msgid "If your device is not found, make sure it is unlocked."
-msgstr ""
-"Se o dispositivo não for encontardo, certifique-se de que está desbloqueado"
+msgstr "Se o dispositivo não for encontardo, verificar se está desbloqueado."
 
 #: idevice-mounter:161
 msgid ""
 "If you get a  \"Trust This Computer?\"  popup on your device when you plug "
 "it in, answer \"Trust\", then Rescan."
 msgstr ""
+"Se ao acoplar o dispositivo aparecer uma janela \"Confiar neste "
+"computador?\" ou \"Trust This Computer?\", responder \"Confiar\"/\"Trust\" e"
+" voltar a buscar."
 
 #: idevice-mounter:167
 msgid ""
@@ -85,3 +87,5 @@ msgid ""
 "Use the Unmount button before you remove your device.  If you have already "
 "unplugged it, plug your device back in, Rescan, and Unmount."
 msgstr ""
+"Usar o botão 'Desmontar' antes de desacoplar o dispositico. Caso contrário, "
+"voltar a acoplar o dispositivo, Buscar e Desmontar."
