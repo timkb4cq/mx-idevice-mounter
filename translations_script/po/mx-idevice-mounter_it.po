@@ -20,7 +20,7 @@ msgstr ""
 
 #: idevice-mounter:97
 msgid "MX iDevice Mounter"
-msgstr "MX Montaggio iDevice"
+msgstr "MX Monta iDevice"
 
 #: idevice-mounter:98
 msgid "Version:"
