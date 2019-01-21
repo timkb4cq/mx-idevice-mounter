@@ -35,7 +35,8 @@ msgstr "Version:"
 msgid ""
 "GUI program for mounting & unmounting <br> iPhones and Ipads in MX Linux"
 msgstr ""
-"GUI-program til montering og afmontering af <br> iPhones og Ipads i MX Linux"
+"Program med grafisk brugerflade til montering og afmontering af <br> iPhones"
+" og Ipads i MX Linux"
 
 #: idevice-mounter:100
 msgid "Copyright (c) MX Linux"
