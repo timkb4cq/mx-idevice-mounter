@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Geoff Gigg <geoffgigg@hotmail.com>, 2017
 # anticapitalista <anticapitalista@riseup.net>, 2017
+# Przemek P <ppjg@dami.pl>, 2019
 # Filip Bog <mxlinuxpl@gmail.com>, 2019
 # 
 #, fuzzy
@@ -25,20 +25,22 @@ msgstr ""
 
 #: idevice-mounter:97
 msgid "MX iDevice Mounter"
-msgstr ""
+msgstr "MX iDevice Mounter"
 
 #: idevice-mounter:98
 msgid "Version:"
-msgstr ""
+msgstr "Wersja:"
 
 #: idevice-mounter:99
 msgid ""
 "GUI program for mounting & unmounting <br> iPhones and Ipads in MX Linux"
 msgstr ""
+"Program GUI do montowania i odmontowywania iPhonów i iPadów w systemie MX "
+"Linux"
 
 #: idevice-mounter:100
 msgid "Copyright (c) MX Linux"
-msgstr "Copyright (c) MX Linux"
+msgstr "Prawa autorskie © MX Linux"
 
 #: idevice-mounter:128
 msgid "Mount"
@@ -46,11 +48,11 @@ msgstr "Montuj"
 
 #: idevice-mounter:133
 msgid "Rescan"
-msgstr ""
+msgstr "Skanuj ponownie"
 
 #: idevice-mounter:138
 msgid "Unmount"
-msgstr ""
+msgstr "Odmontuj"
 
 #: idevice-mounter:143
 msgid "Close"
@@ -67,21 +69,29 @@ msgstr "Pomoc"
 #: idevice-mounter:160
 msgid "If your device is not found, make sure it is unlocked."
 msgstr ""
+"Jeśli Twoje urządzenie nie zostało znalezione, upewnij się, że jest "
+"odblokowane."
 
 #: idevice-mounter:161
 msgid ""
 "If you get a  \"Trust This Computer?\"  popup on your device when you plug "
 "it in, answer \"Trust\", then Rescan."
 msgstr ""
+"Jeśli otrzymasz komunikat \"Czy ufać temu komputerowi?\" na twoim urządzeniu"
+" po podłączeniu go, odpowiedz \"Ufaj\", a następnie ponownie przeskanuj."
 
 #: idevice-mounter:167
 msgid ""
 "If the information below describes your Apple device press the \"Mount\" "
 "button to access its files."
 msgstr ""
+"Jeśli poniższe informacje opisują twoje urządzenie Apple, naciśnij przycisk "
+"\"Montuj\", aby uzyskać dostęp do jego plików."
 
 #: idevice-mounter:186
 msgid ""
 "Use the Unmount button before you remove your device.  If you have already "
 "unplugged it, plug your device back in, Rescan, and Unmount."
 msgstr ""
+"Użyj przycisku Odmontuj zanim usuniesz urządzenie. Jeśli już go odłączyłeś, "
+"podłącz z powrotem urządzenie, Skanuj ponownie i Odmontuj."
