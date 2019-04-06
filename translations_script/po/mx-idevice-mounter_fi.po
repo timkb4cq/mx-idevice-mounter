@@ -3,13 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# anticapitalista <anticapitalista@riseup.net>, 2017
+# James Bowlin <BitJam@gmail.com>, 2017
+# En Kerro <inactive+ekeimaja@transifex.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-02 11:04-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-12-02 16:14+0000\n"
 "Last-Translator: En Kerro <inactive+ekeimaja@transifex.com>, 2018\n"
 "Language-Team: Finnish (https://www.transifex.com/anticapitalista/teams/10162/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -30,6 +35,8 @@ msgstr "Versio: "
 msgid ""
 "GUI program for mounting & unmounting <br> iPhones and Ipads in MX Linux"
 msgstr ""
+"Graafinen käyttöliittymä <br> iPhonen ja Ipadin liittämiseen ja "
+"irrottamiseen MX Linux:issa"
 
 #: idevice-mounter:100
 msgid "Copyright (c) MX Linux"
@@ -41,7 +48,7 @@ msgstr "Liitos"
 
 #: idevice-mounter:133
 msgid "Rescan"
-msgstr ""
+msgstr "Skannaa uudelleen"
 
 #: idevice-mounter:138
 msgid "Unmount"
@@ -68,15 +75,21 @@ msgid ""
 "If you get a  \"Trust This Computer?\"  popup on your device when you plug "
 "it in, answer \"Trust\", then Rescan."
 msgstr ""
+"Jos saat  \"Luota tähän tietokoneeseen?\"  ilmoituksen kun liität sen "
+"koneeseen, vastaa \"Luota\", sitten skannaa uudelleen."
 
 #: idevice-mounter:167
 msgid ""
 "If the information below describes your Apple device press the \"Mount\" "
 "button to access its files."
 msgstr ""
+"Jos alapuolella olevat tiedot täsmäävät Apple-laitteeseesi, paina \"Liitä\" "
+"painiketta päästäksesi käsiksi laitteen tiedostoihin."
 
 #: idevice-mounter:186
 msgid ""
 "Use the Unmount button before you remove your device.  If you have already "
 "unplugged it, plug your device back in, Rescan, and Unmount."
 msgstr ""
+"Käytä Irrota-painiketta ennen kuin poistat laitteesi.  Jos olet jos "
+"irrottanut sen, kytke laite takaisin koneeseen, skannaa, ja paina Irrota."
