@@ -48,7 +48,7 @@ msgstr "Montuj"
 
 #: idevice-mounter:133
 msgid "Rescan"
-msgstr "Skanuj ponownie"
+msgstr "Skanuj"
 
 #: idevice-mounter:138
 msgid "Unmount"
