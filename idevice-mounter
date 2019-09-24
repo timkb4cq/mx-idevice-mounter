@@ -7,14 +7,14 @@ iDevice mounter for MX
 This program scans, mounts and unmounts iPhones and iPads.
 
 Author: Timothy E. Harris <maintainer@mxrepo.com>
-Last edited: October 2017
+Last edited: July 2019
 License GPL-2+
 """
 
-import sys, time, os
+import sys, time, os, re
 import subprocess
-
 import gettext
+
 gettext.bindtextdomain('mx-idevice-mounter', '/usr/share/locale')
 gettext.textdomain('mx-idevice-mounter')
 _ = gettext.gettext
@@ -62,13 +62,11 @@ class Idevmanager(QMainWindow):
            p = subprocess.call(["/usr/bin/ifuse", "-u", self.deviceid, self.mypath])
 
         if self.isMount():
-           thunar = subprocess.Popen(["/usr/bin/thunar", self.mypath])
-           tpid = thunar.pid
-           print(tpid)
+           p = subprocess.Popen(["/usr/bin/thunar" , self.mypath])
            self.umountb.setEnabled(True)
            self.mountb.setEnabled(False)
            self.hide()
-           os.waitpid(tpid, 0)
+           self.waitforThunar()
            self.show()
         else:
            self.umountb.setEnabled(False)
@@ -91,6 +89,17 @@ class Idevmanager(QMainWindow):
         else:
            return False
 
+    def waitforThunar(self):
+        time.sleep( 1 )  # wait for Thunar window to open
+        p = subprocess.check_output(['/usr/bin/wmctrl -l | /bin/grep "' + self.devicename + '"'], shell=True)
+#          Get list of xWindows containing the iDevice name in their titlebar
+        self.windowlist = p.decode('utf-8').rstrip()
+        self.windowid = re.findall('^0x[0-9a-f]{8}', self.windowlist, re.MULTILINE)[-1]
+#          Choose the most recently opened of those xWindows
+        p = subprocess.call(['/usr/bin/xprop -spy -id "' + self.windowid + '">/dev/null'], shell=True)
+#          And monitor it until it's closed
+        return True
+        
     def displayAbout(self):
         p = subprocess.check_output(['dpkg -l mx-idevice-mounter | grep mounter | cut -f 4 -d " "' ], shell=True)
         myversion = p.decode('utf-8').rstrip()
@@ -119,12 +128,15 @@ class Idevmanager(QMainWindow):
         p=subprocess.call(["/usr/bin/mx-viewer", helpurl , helpheader])
 
     def initUI(self):               
-        
+        p = subprocess.check_output(['xfconf-query -c xsettings -l -pv /Net/ThemeName | awk \'{if (toupper($2) ~ /DARK/) print "1"; else print"0"}\''], shell=True)
+        mytheme = p.decode('utf-8').rstrip()
         self.setGeometry(100, 300, 700, 400)
         self.setWindowTitle('Mount iDevice')
-        self.setWindowIcon(QIcon('/usr/share/pixmaps/idevice.svg'))
-        self.setStyleSheet("color: black")
-
+        self.setWindowIcon(QIcon('/usr/share/pixmaps/idevice.png'))
+        if mytheme == "0":
+           self.setStyleSheet("color: black")
+        else:
+           self.setStyleSheet("color: Lightgrey")
         abouticon = QIcon.fromTheme('help-about')
         helpicon = QIcon.fromTheme('help-contents')
         closeicon = QIcon.fromTheme('window-close')
@@ -185,15 +197,19 @@ class Idevmanager(QMainWindow):
 
         self.label2 = QLabel('', self)
         self.label2.setGeometry(70, 190, 340, 25)
-        self.label2.setStyleSheet("background-color: lightyellow; border-style: outset; border-width: 2px; border-color: black")
-        
+        if mytheme == "0":
+          self.label2.setStyleSheet("background-color: lightyellow; border-style: outset; border-width: 2px; border-color: black")
+        else:
+          self.label2.setStyleSheet("background-color: #303030; border-style: outset; border-width: 2px; border-color: grey")
         self.label3 = QLabel("UUID:", self)
         self.label3.setGeometry(10, 220, 60, 25)
          
         self.label4 = QLabel('', self)
         self.label4.setGeometry(70, 220, 340, 25)
-        self.label4.setStyleSheet("background-color: lightyellow; border-style: outset; border-width: 2px; border-color: black")
-
+        if mytheme =="0":
+          self.label4.setStyleSheet("background-color: lightyellow; border-style: outset; border-width: 2px; border-color: black")
+        else:
+          self.label4.setStyleSheet("background-color: #303030; border-style: outset; border-width: 2px; border-color: grey")
         self.footer = QLabel('', self)
         self.footer.setGeometry(10, 250, 530, 100)
         self.footer.setText(_('Use the Unmount button before you remove your device.  If you have already unplugged it, plug your device back in, Rescan, and Unmount.'))

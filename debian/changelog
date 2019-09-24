@@ -1,3 +1,29 @@
+mx-idevice-mounter (0.1.5.8) mx; urgency=medium
+
+  * Updated translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Tue, 24 Sep 2019 12:13:31 -0400
+
+mx-idevice-mounter (0.1.5.7) mx; urgency=medium
+
+  * App now hides when iDevce is mounted until that Thunar Window closes
+  * when it reappears for unmounting
+  * Fixed background color of info boxes for Dark Themes.
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Fri, 19 Jul 2019 01:20:21 -0400
+
+mx-idevice-mounter (0.1.5.6) mx; urgency=medium
+
+  * Fixed text color for Dark themes
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Tue, 16 Jul 2019 14:22:36 -0400
+
+mx-idevice-mounter (0.1.5.5) mx; urgency=medium
+
+  * New Icon for MX-19
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Mon, 15 Jul 2019 12:51:14 -0400
+
 mx-idevice-mounter (0.1.5.4) mx; urgency=medium
 
   * Updated translations
