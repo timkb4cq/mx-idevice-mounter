@@ -1,3 +1,10 @@
+mx-idevice-mounter (0.1.5.10) mx; urgency=medium
+
+  * Use new svg version of icon
+  * Use icon in theme if present, else use the one put in usr/share/pixmaps
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Mon, 30 Sep 2019 13:48:16 -0400
+
 mx-idevice-mounter (0.1.5.9) mx; urgency=medium
 
   * Updated translations
