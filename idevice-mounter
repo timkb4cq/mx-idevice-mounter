@@ -132,7 +132,10 @@ class Idevmanager(QMainWindow):
         mytheme = p.decode('utf-8').rstrip()
         self.setGeometry(100, 300, 700, 400)
         self.setWindowTitle('Mount iDevice')
-        self.setWindowIcon(QIcon('/usr/share/pixmaps/idevice.png'))
+        if QIcon.hasThemeIcon("idevice"):
+           self.setWindowIcon(QIcon.fromTheme("idevice"))
+        else:
+           self.setWindowIcon(QIcon("/usr/share/pixmaps/idevice.svg"))
         if mytheme == "0":
            self.setStyleSheet("color: black")
         else:
