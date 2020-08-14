@@ -1,10 +1,116 @@
-mx-idevice-mounter (0.1.4.3) UNRELEASED; urgency=medium
+mx-idevice-mounter (0.1.5.10) mx; urgency=medium
+
+  * Use new svg version of icon
+  * Use icon in theme if present, else use the one put in usr/share/pixmaps
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Mon, 30 Sep 2019 13:48:16 -0400
+
+mx-idevice-mounter (0.1.5.9) mx; urgency=medium
+
+  * Updated translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Sat, 28 Sep 2019 16:18:59 -0400
+
+mx-idevice-mounter (0.1.5.8) mx; urgency=medium
+
+  * Updated translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Tue, 24 Sep 2019 12:13:31 -0400
+
+mx-idevice-mounter (0.1.5.7) mx; urgency=medium
+
+  * App now hides when iDevce is mounted until that Thunar Window closes
+  * when it reappears for unmounting
+  * Fixed background color of info boxes for Dark Themes.
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Fri, 19 Jul 2019 01:20:21 -0400
+
+mx-idevice-mounter (0.1.5.6) mx; urgency=medium
+
+  * Fixed text color for Dark themes
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Tue, 16 Jul 2019 14:22:36 -0400
+
+mx-idevice-mounter (0.1.5.5) mx; urgency=medium
+
+  * New Icon for MX-19
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Mon, 15 Jul 2019 12:51:14 -0400
+
+mx-idevice-mounter (0.1.5.4) mx; urgency=medium
+
+  * Updated translations
+
+ -- Timothy E. Harris <maintainer@mepiscommunity.org>  Sat, 06 Apr 2019 09:55:34 -0400
+
+mx-idevice-mounter (0.1.5.3) mx; urgency=medium
+
+  * Updated translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Wed, 23 Jan 2019 18:18:08 -0500
+
+mx-idevice-mounter (0.1.5.2) mx; urgency=medium
+
+  * Updated translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Fri, 30 Nov 2018 16:16:59 -0500
+
+mx-idevice-mounter (0.1.5.1) mx; urgency=medium
+
+  * Updated translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Sun, 14 Oct 2018 20:49:13 -0400
+
+mx-idevice-mounter (0.1.5.0) mx; urgency=medium
+
+  * New & updated translations
+
+ -- Timothy E. Harris <maintainer@mepiscommunity.org>  Mon, 18 Jun 2018 17:43:14 -0500
+ 
+mx-idevice-mounter (0.1.4.9) mx; urgency=medium
+
+  * New & pdated translations
+
+ -- Timothy E. Harris <maintainer@mepiscommunity.org>  Fri, 02 Mar 2018 18:58:31 -0500
+
+mx-idevice-mounter (0.1.4.8) mx; urgency=medium
+
+  * New & updated translations
+  * Automated formerly manual translation file copying 
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Wed, 14 Feb 2018 13:16:33 -0500
+
+mx-idevice-mounter (0.1.4.7) mx; urgency=medium
+
+  * Add es, el, it, & tr translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Tue, 12 Dec 2017 09:44:54 -0500
+
+mx-idevice-mounter (0.1.4.6) UNRELEASED; urgency=medium
+
+  * Utilize French help translation when appropriate
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Tue, 12 Dec 2017 09:27:10 -0500
+
+mx-idevice-mounter (0.1.4.5) mx; urgency=medium
+
+  * Switched "System" to "HardwareSettings" in desktop file.
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Thu, 07 Dec 2017 18:26:52 -0500
+
+mx-idevice-mounter (0.1.4.4) mx; urgency=medium
+
+  * Added fr, nl & de translations
+
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Thu, 07 Dec 2017 13:10:42 -0500
+
+mx-idevice-mounter (0.1.4.3) mx; urgency=medium
 
   * Changed from using the unreliable Popen.wait() to os.waitpid()
   * for determining when spawned Thunar exits.
 
- -- Timothy E. Harris <tim@mx17b2>  Thu, 30 Nov 2017 12:48:26 -0500
-
+ -- Timothy E. Harris <maintainer@mxrepo.com>  Thu, 30 Nov 2017 12:48:26 -0500
+ 
 mx-idevice-mounter (0.1.4.2) mx; urgency=medium
 
   * Translation framework added
