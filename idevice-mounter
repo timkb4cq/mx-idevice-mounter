@@ -127,9 +127,13 @@ class Idevmanager(QMainWindow):
            helpheader="MX iDevice Mounter Help"
         p=subprocess.call(["/usr/bin/mx-viewer", helpurl , helpheader])
 
-    def initUI(self):               
-        p = subprocess.check_output(['xfconf-query -c xsettings -l -pv /Net/ThemeName | awk \'{if (toupper($2) ~ /DARK/) print "1"; else print"0"}\''], shell=True)
-        mytheme = p.decode('utf-8').rstrip()
+    def initUI(self):
+        if os.getenv("XDG_CURRENT_DESKTOP") == "XFCE":
+            p = subprocess.check_output(['xfconf-query -c xsettings -l -pv /Net/ThemeName | awk \'{if (toupper($2) ~ /DARK/) print "1"; else print"0"}\''], shell=True)
+            mytheme = p.decode('utf-8').rstrip()
+        else:
+            mytheme = "0"
+            
         self.setGeometry(100, 300, 700, 400)
         self.setWindowTitle('Mount iDevice')
         if QIcon.hasThemeIcon("idevice"):
