@@ -1,3 +1,10 @@
+mx-idevice-mounter (0.1.5.12) mx; urgency=medium
+
+  * rearrange about-box buttons
+  * add changelog button to about-box
+
+ -- fehlix <fehlix@mxlinux.org>  Fri, 14 Aug 2020 23:25:18 +0200
+
 mx-idevice-mounter (0.1.5.11) mx; urgency=medium
 
   * Adjustment for KDE theming

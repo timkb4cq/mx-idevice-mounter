@@ -23,6 +23,8 @@ gettext.install('mx-idevice-mounter')
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QWidget, QMessageBox, QSizePolicy
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QCoreApplication
+from distutils import spawn
+
 
 class Idevmanager(QMainWindow):
     
@@ -101,7 +103,7 @@ class Idevmanager(QMainWindow):
         return True
         
     def displayAbout(self):
-        p = subprocess.check_output(['dpkg -l mx-idevice-mounter | grep mounter | cut -f 4 -d " "' ], shell=True)
+        p = subprocess.check_output(["dpkg-query -f '${Version}' -W mx-idevice-mounter 2>/dev/null || echo ''" ], shell=True)
         myversion = p.decode('utf-8').rstrip()
         t1 = _("MX iDevice Mounter")
         t2 = _("Version:")
@@ -111,12 +113,53 @@ class Idevmanager(QMainWindow):
         aboutBox.setText("<p align=center><b><h2>" + t1 + "</h2></b></p><p align=center>" + t2 + " " + myversion + "</p><p align=center><h3>" +
                    t3 + "</h3></p><p align=center><a href=http://mxlinux.org>http://mxlinux.org</a> \
                    <br></p><p align=center>" + t4 + "<br /><br /></p>")
-        aboutBox.addButton("Cancel", QMessageBox.YesRole)
-        aboutBox.addButton("License", QMessageBox.NoRole)
-        reply = aboutBox.exec_()
-        if reply == 1:
-           p=subprocess.call(["/usr/bin/mx-viewer", "/usr/share/doc/mx-idevice-mounter/license.html", "MX iDevice Mounter license"])
 
+        aboutTitle          = _('About MX iDevice Mounter')
+        changelogTitle      = _('MX iDevice Mounter Changelog')
+        changelogButtonText = _('Changelog')
+        closeButtonText     = _('Close')
+        licenseButtonText   = _('License')
+        license             = "/usr/share/doc/mx-idevice-mounter/license.html"
+        licenseViewerTitle  = _('MX iDevice Mounter license')
+        
+        aboutBox.setWindowTitle(aboutTitle)
+        changelogButton = aboutBox.addButton((changelogButtonText), QMessageBox.ActionRole)
+        licenseButton   = aboutBox.addButton((licenseButtonText)  , QMessageBox.ActionRole)
+        closeButton     = aboutBox.addButton((closeButtonText)    , QMessageBox.RejectRole)
+        aboutBox.setDefaultButton(closeButton)
+        aboutBox.setEscapeButton(closeButton)
+
+        reply = aboutBox.exec_()
+        
+        if aboutBox.clickedButton() == licenseButton:
+                p=subprocess.call(["/usr/bin/mx-viewer", license, licenseViewerTitle])
+
+        if aboutBox.clickedButton() == changelogButton:
+            icon = "/usr/share/pixmaps/idevice.svg"
+            command_string = ''
+            command_string += 'icon="'  + icon           + '";'
+            command_string += 'title="' + changelogTitle + '";'
+            command_string += 'close="' + closeButtonText + '";'
+            command_string += '''
+                read width height < <(xdotool getdisplaygeometry); 
+                width=$(($width*3/4)); 
+                height=$(($height*2/3)); 
+                zcat /usr/share/doc/mx-idevice-mounter/changelog.gz 2>&1 | 
+                yad --width=$width
+                  --height=$height
+                  --center
+                  --button="$close"
+                  --window-icon="$icon"
+                  --title="$title"
+                  --fontname=mono
+                  --margins=7
+                  --borders=5
+                  --text-info
+                '''
+            command = " ".join(command_string.split())
+            command = "bash -c '%s'" % command
+            p=subprocess.call([command], shell=True)
+        
     def displayHelp(self):
         lang=os.getenv('LANG')
         if lang.startswith('fr'):
@@ -140,6 +183,7 @@ class Idevmanager(QMainWindow):
            self.setWindowIcon(QIcon.fromTheme("idevice"))
         else:
            self.setWindowIcon(QIcon("/usr/share/pixmaps/idevice.svg"))
+ 
         if mytheme == "0":
            self.setStyleSheet("color: black")
         else:
